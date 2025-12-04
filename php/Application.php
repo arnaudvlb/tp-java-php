@@ -36,7 +36,7 @@ class Application
             echo "3. Retourner un outil\n";
             echo "4. Quitter\n";
 
-            $choiceLine = readLineInput("Votre choix : ");
+            $choiceLine = $this->readLineInput("Votre choix : ");
             if (!ctype_digit($choiceLine)) {
                 echo "Choix invalide.\n\n";
                 continue;
@@ -46,14 +46,14 @@ class Application
             if ($choice === 1) {
                 $this->catalogue->listeOutils();
             } elseif ($choice === 2) {
-                $indexLine = readLineInput("\nEntrez l'index de l'outil a louer : ");
+                $indexLine = $this->readLineInput("\nEntrez l'index de l'outil a louer : ");
                 if (!ctype_digit($indexLine)) {
                     echo "Index invalide.\n\n";
                     continue;
                 }
                 $index = intval($indexLine);
 
-                $daysLine = readLineInput("Nombre de jours de location : ");
+                $daysLine = $this->readLineInput("Nombre de jours de location : ");
                 if (!ctype_digit($daysLine)) {
                     echo "Nombre de jours invalide.\n\n";
                     continue;
@@ -62,7 +62,7 @@ class Application
 
                 $this->gestionLocation->locationOutil($index, $days);
             } elseif ($choice === 3) {
-                $indexLine = readLineInput("\nEntrez l'index de l'outil a retourner : ");
+                $indexLine = $this->readLineInput("\nEntrez l'index de l'outil a retourner : ");
                 if (!ctype_digit($indexLine)) {
                     echo "Index invalide.\n\n";
                     continue;

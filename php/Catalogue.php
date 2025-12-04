@@ -1,6 +1,6 @@
 <?php
 
-require 'Outil.php';
+require_once 'Outil.php';
 
 class Catalogue
 {
@@ -19,15 +19,16 @@ class Catalogue
         foreach ($nom as $key => $value) {
             echo $key . ". " . $value . " : " . ($disponible[$key] == true ? "DISPONIBLE" : "LOUE") . "\n";
         }
+        echo "\n";
     }
 
     public function rechercheId(int $id)
     {
         $nom = $this->outil->getNom();
-        if (is_null($nom[$id])) {
-            echo "Aucun outil à l'identifiant entré";
+        if (!array_key_exists($id, $nom)) {
+            echo "Index invalide.\n\n";
         } else {
-            echo "L'outil correspondant à " . $id . " est: " . $nom[$id];
+            echo "L'outil correspondant à " . $id . " est: " . $nom[$id] . "\n\n";
         }
     }
 }

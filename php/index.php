@@ -2,6 +2,6 @@
 
 require 'Main.php';
 
-$main = new Main();
+$main = new Main;
 
 $main->main();

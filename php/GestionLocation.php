@@ -1,6 +1,6 @@
 <?php
 
-require 'Outil.php';
+require_once 'Outil.php';
 
 class GestionLocation
 {
@@ -17,14 +17,12 @@ class GestionLocation
         $prixParJour = $this->outil->getPrixParJour();
         $disponible = $this->outil->getDisponible();
 
-        if (is_null($nom[$id])) {
+
+        if (!array_key_exists($id, $nom)) {
             echo "Index invalide.\n\n";
-        } elseif ($disponible[$id] == false){
+        } elseif ($disponible[$id] == false) {
             echo "Outil deja loue. Impossible de le louer a nouveau.\n\n";
-        } if($nbJour <= 0) {
-            echo "Le nombre de jours doit etre strictement positif.\n\n";
-        }
-         else {
+        } else {
             echo "\n---------- Recapitulatif ----------\n";
             echo "Outil : " . $nom[$id] . "\n";
             echo "Duree : " . $nbJour . " jour(s)\n";
@@ -41,11 +39,10 @@ class GestionLocation
         $nom = $this->outil->getNom();
         $disponible = $this->outil->getDisponible();
 
-        if(is_null($nom[$id])){
-            echo "Aucun outil pour cet index.\n\n";
-        }
-        elseif ($disponible[$id] == true) {
-            echo "Cet outil est deja marque comme disponible.";
+        if (!array_key_exists($id, $nom)) {
+            echo "Index invalide.\n\n";
+        } elseif ($disponible[$id] == true) {
+            echo "Cet outil est deja marque comme disponible.\n\n";
         } else {
             echo "Outil " . $nom[$id] . " retourne. Il est maintenant disponible.\n\n";
 

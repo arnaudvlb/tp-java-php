@@ -28,6 +28,17 @@ class Outil{
     public function getNom() {
         return $this->nom;
     }
-    
+
+    public function getPrixParJour() {
+        return $this->prixParJour;
+    }
+
+    public function getDisponible() {
+        return $this->disponible;
+    }
+
+    public function setDisponible($nouveauDisponible) {
+        $this->disponible = $nouveauDisponible;
+    }
 }
 ?>
